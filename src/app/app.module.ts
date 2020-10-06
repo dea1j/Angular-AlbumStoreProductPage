@@ -12,10 +12,10 @@ import { ProductService } from "./product.service";
 import { ProductTracklistingComponent } from "./product-tracklisting/product-tracklisting.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 
-const appRoutes: Routes[
-  'path': "products",
-  "component": "ProductListComponent"
-]
+const appRoutes: Routes = [
+  { path: "products", component: ProductListComponent },
+  { path: "product/:id", component: ProductPageComponent },
+];
 
 @NgModule({
   declarations: [
@@ -25,7 +25,12 @@ const appRoutes: Routes[
     ProductTracklistingComponent,
     ProductListComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes),
+  ],
   providers: [ProductService],
   bootstrap: [AppComponent],
 })
